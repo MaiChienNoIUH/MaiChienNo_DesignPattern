@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
+        printALlEmployee_NoDegnPattern();
+        System.out.println("-------------------------------------------------");
+    }
+    
+    public static void printALlEmployee_NoDegnPattern(){
         EmployeeNoPattern employee1_noPattern = new EmployeeNoPattern("1", "Kế toán trưởng");
         EmployeeNoPattern employee2_noPattern = new EmployeeNoPattern("2", "Nhân viên văn phòng");
         EmployeeNoPattern employee3_noPattern = new EmployeeNoPattern("3",  "Nhân viên văn phòng");
