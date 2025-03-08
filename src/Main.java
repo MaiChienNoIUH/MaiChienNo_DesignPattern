@@ -1,3 +1,7 @@
+import DecoratorPattern.BaseEmployee;
+import DecoratorPattern.CaptainDecorator;
+import DecoratorPattern.DirectorDecorator;
+import DecoratorPattern.Employee;
 import NoPattern.EmployeeNoPattern;
 import StatePattern.*;
 import StrategyPattern.*;
@@ -7,13 +11,23 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-//        printALlEmployee_NoDegnPattern();
-//        System.out.println("-------------------------------------------------");
-//        System.out.println("STATE PATTERN");
-//        printALlEmployee_StatePattern();
+        System.out.println("NO DESIGN PATTERN");
+        printALlEmployee_NoDegnPattern();
+
+        System.out.println("-------------------------------------------------");
+        System.out.println("-------------------------------------------------");
+        System.out.println("STATE PATTERN");
+        printALlEmployee_StatePattern();
+
+        System.out.println("-------------------------------------------------");
         System.out.println("-------------------------------------------------");
         System.out.println("STRATEGY PATTERN");
         printALlEmployee_StrategyPattern();
+
+        System.out.println("-------------------------------------------------");
+        System.out.println("-------------------------------------------------");
+        System.out.println("DECORATOR PATTERN");
+        printALlEmployee_DecoratorPattern();
     }
 
     public static void printALlEmployee_NoDegnPattern(){
@@ -114,5 +128,29 @@ public class Main {
         employee.setWorkStrategy(new ChiefAccountantStrategy());
         System.out.println("Trạng thái: Kế toán Trưởng");
         employee.performWork();
+    }
+
+    public static void printALlEmployee_DecoratorPattern(){
+        Employee employee1 = new BaseEmployee();
+        System.out.println("Nhân viên cơ bản:");
+        employee1.performWork();
+
+        System.out.println("----------");
+
+        Employee employee2 = new CaptainDecorator(new BaseEmployee());
+        System.out.println("Nhân viên cơ bản với trách nhiệm của Đội trưởng:");
+        employee2.performWork();
+
+        System.out.println("----------");
+
+        Employee employee3 = new DirectorDecorator(new BaseEmployee());
+        System.out.println("Nhân viên cơ bản với trách nhiệm của Giám đốc:");
+        employee3.performWork();
+
+        System.out.println("----------");
+
+        Employee employee4 = new DirectorDecorator(new CaptainDecorator(new BaseEmployee()));
+        System.out.println("Nhân viên cơ bản với trách nhiệm của Đội trưởng và Giám đốc:");
+        employee4.performWork();
     }
 }
