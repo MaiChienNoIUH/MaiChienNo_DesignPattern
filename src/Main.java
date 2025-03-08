@@ -1,5 +1,6 @@
 import NoPattern.EmployeeNoPattern;
 import StatePattern.*;
+import StrategyPattern.*;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -7,9 +8,12 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
 //        printALlEmployee_NoDegnPattern();
+//        System.out.println("-------------------------------------------------");
+//        System.out.println("STATE PATTERN");
+//        printALlEmployee_StatePattern();
         System.out.println("-------------------------------------------------");
-        System.out.println("STATE PATTERN");
-        printALlEmployee_StatePattern();
+        System.out.println("STRATEGY PATTERN");
+        printALlEmployee_StrategyPattern();
     }
 
     public static void printALlEmployee_NoDegnPattern(){
@@ -80,5 +84,35 @@ public class Main {
         employee.setState(new ChiefAccountantState());
         System.out.println("Trạng thái: Kế toán Trưởng");
         employee.handleRequest();  // In ra công việc của Kế toán Trưởng
+    }
+
+    public static void printALlEmployee_StrategyPattern(){
+        EmployeeStrategyPattern employee = new EmployeeStrategyPattern(new CaptainStrategy());
+        System.out.println("Trạng thái: Đội trưởng");
+        employee.performWork();
+
+        System.out.println("----------");
+
+        employee.setWorkStrategy(new DirectorStrategy());
+        System.out.println("Trạng thái: Giám đốc");
+        employee.performWork();
+
+        System.out.println("----------");
+
+        employee.setWorkStrategy(new OfficeStaffStrategy());
+        System.out.println("Trạng thái: Nhân viên văn phòng");
+        employee.performWork();
+
+        System.out.println("----------");
+
+        employee.setWorkStrategy(new WokshopStaffStrategy());
+        System.out.println("Trạng thái: Nhân viên Xưởng");
+        employee.performWork();
+
+        System.out.println("----------");
+
+        employee.setWorkStrategy(new ChiefAccountantStrategy());
+        System.out.println("Trạng thái: Kế toán Trưởng");
+        employee.performWork();
     }
 }
